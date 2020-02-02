@@ -21,6 +21,38 @@ public class CodingExamA {
 		 * 
 		 * See the Coding_Exam_A_Demo.jar for an example of what the finished product should look like.
 		 */
-
+		 String num = JOptionPane.showInputDialog("How many robots?");
+		 String color = JOptionPane.showInputDialog("What color - Red, Blue, or Greeeeeeeeeeeeeeeeeeeeeeen?");
+		 String sides = JOptionPane.showInputDialog("How many sides?");
+		 int nums = Integer.parseInt(num);
+		 Thread t = new Thread(()->{
+			 Robot r = new Robot();
+			 Color c;
+			 switch(color.toUpperCase()) {
+			 case "RED":
+				 c = Color.RED;
+				 break;
+			 case "GREEN":
+				 c = Color.GREEN;
+				 break;
+			 case "BLUE":
+				 c = Color.BLUE;
+				 break;
+			 default:
+				 c = Color.CYAN;
+			 }
+			 r.setPenColor(c);
+			 r.penDown();
+			 for(int i=0; i<Integer.parseInt(sides);i++) {
+				r.setSpeed(100);
+			 	r.move(40);
+			 	r.turn(20);
+			 }
+			 r.penUp();
+			 r.move(440);
+		 }); 
+		 for(int i=0;i<nums;i++) {
+			 t.start();
+		 }
 	}
 }

@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class CodingExamB {
+	static String out = "SDebug\n";
 	/*
 	 * This is a logging program for collecting TODO comments in a program. The program will scan
 	 * Through all the files in the Coding_Exam_B/classes package, and collect all the comments that start
@@ -24,8 +25,25 @@ public class CodingExamB {
 		 *    into one large String. The string will also state the file name and
 		 *    the line number for where each TODO was found. 
 		*/
-		
-		return "";
+			out+="File:"+fileName+"\n";
+			try {
+				String l="";
+				BufferedReader br = new BufferedReader(new FileReader(fileName));
+				while(br.readLine() != null) {
+					l=br.readLine();
+					System.out.println("L=" + l);
+					if(l.equals("") || l.equals(null)) {
+						break;
+					}
+					if(l.contains("//TODO:")) {
+						out+=l+"\n";
+					}
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return out;
 	}
 	
 	public static void main(String[] args) {
@@ -37,6 +55,13 @@ public class CodingExamB {
 		/*
 		 * 2. Write the finalLogString to a file called TODO_Log.txt. The file should match TODO_Log_example.txt. 
 		 */
+		try {
+			FileWriter fw = new FileWriter("TODO_Log.txt");
+			fw.write(finalLogString);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 }
