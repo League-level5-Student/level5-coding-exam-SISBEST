@@ -7,7 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class CodingExamB {
-	static String out = "SDebug\n";
+	static String out = "S Debug \n";
 	/*
 	 * This is a logging program for collecting TODO comments in a program. The program will scan
 	 * Through all the files in the Coding_Exam_B/classes package, and collect all the comments that start
@@ -26,38 +26,41 @@ public class CodingExamB {
 		 *    the line number for where each TODO was found. 
 		*/
 			out+="File:"+fileName+"\n";
+			System.out.println(out);
 			try {
 				String l="";
 				BufferedReader br = new BufferedReader(new FileReader(fileName));
-				while(br.readLine() != null) {
+				while(br.readLine() != null || br.readLine() != "") {
 					l=br.readLine();
-					System.out.println("L=" + l);
-					if(l.equals("") || l.equals(null)) {
-						break;
-					}
-					if(l.contains("//TODO:")) {
-						out+=l+"\n";
+					System.out.println(l);
+					if(l != null || l != "") {
+						if(l.contains("//TODO:")) {
+							out+=l+"\n";
+							System.out.println(out);
+						}
 					}
 				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			} catch (Exception e) {
 			}
 		return out;
 	}
 	
 	public static void main(String[] args) {
 		String finalLogString = getLoggingInfo("src/Coding_Exam_B/classes/Camera.java");
-		finalLogString += getLoggingInfo("src/Coding_Exam_B/classes/RayTracedImageViewer.java");
-		finalLogString += getLoggingInfo("src/Coding_Exam_B/classes/RayTracer.java");
-		finalLogString += getLoggingInfo("src/Coding_Exam_B/classes/Vector3.java");
-		
+		out = "";
+		//finalLogString += getLoggingInfo("src/Coding_Exam_B/classes/RayTracedImageViewer.java");
+		out = "";
+		//finalLogString += getLoggingInfo("src/Coding_Exam_B/classes/RayTracer.java");
+		out = "";
+		//finalLogString += getLoggingInfo("src/Coding_Exam_B/classes/Vector3.java");
+		out = "";
 		/*
 		 * 2. Write the finalLogString to a file called TODO_Log.txt. The file should match TODO_Log_example.txt. 
 		 */
 		try {
 			FileWriter fw = new FileWriter("TODO_Log.txt");
 			fw.write(finalLogString);
+			fw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

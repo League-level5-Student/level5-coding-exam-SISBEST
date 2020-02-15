@@ -1,6 +1,7 @@
 package Coding_Exam_A;
 
 import java.awt.Color;
+import java.util.Random;
 
 import javax.swing.JOptionPane;
 
@@ -27,6 +28,8 @@ public class CodingExamA {
 		 int nums = Integer.parseInt(num);
 		 Thread t = new Thread(()->{
 			 Robot r = new Robot();
+			 r.setWindowColor(Color.CYAN);
+			 r.setWindowSize(1300, 900);
 			 Color c;
 			 switch(color.toUpperCase()) {
 			 case "RED":
@@ -39,20 +42,59 @@ public class CodingExamA {
 				 c = Color.BLUE;
 				 break;
 			 default:
-				 c = Color.CYAN;
+				 c = Color.BLUE;
 			 }
 			 r.setPenColor(c);
 			 r.penDown();
+			 r.sparkle();
 			 for(int i=0; i<Integer.parseInt(sides);i++) {
-				r.setSpeed(100);
+				r.setSpeed(62);
 			 	r.move(40);
 			 	r.turn(20);
 			 }
 			 r.penUp();
-			 r.move(440);
+			 r.unSparkle();
 		 }); 
 		 for(int i=0;i<nums;i++) {
 			 t.start();
+			 t = new Thread(()->{
+				 Robot r = new Robot();
+				 Color c;
+				 switch(color.toUpperCase()) {
+				 case "RED":
+					 c = Color.RED;
+					 break;
+				 case "GREEN":
+					 c = Color.GREEN;
+					 break;
+				 case "BLUE":
+					 c = Color.BLUE;
+					 break;
+				 default:
+					 c = Color.CYAN;
+				 }
+				 r.setPenColor(c);
+				 r.setSpeed(900);
+				 r.turn(90);
+				 Random rand = new Random();
+				 boolean posneg = rand.nextBoolean();
+				 if(posneg) {
+					 r.move(rand.nextInt(900));
+				 }
+				 else {
+					 r.move(-rand.nextInt(400));
+				 }
+				 r.penDown();
+				 r.sparkle();
+				 for(int j=0; j<Integer.parseInt(sides);j++) {
+					r.setSpeed(62);
+				 	r.move(40);
+				 	r.turn(20);
+				 }
+				 r.penUp();
+				 r.unSparkle();
+			 });
+			 
 		 }
 	}
 }

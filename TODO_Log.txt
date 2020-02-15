@@ -1,0 +1,2 @@
+S Debug 
+File:src/Coding_Exam_B/classes/Camera.java
