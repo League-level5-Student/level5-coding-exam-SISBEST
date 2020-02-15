@@ -2,6 +2,6 @@ S Debug
 File:src/Coding_Exam_B/classes/Camera.java
 File:src/Coding_Exam_B/classes/RayTracedImageViewer.java
 File:src/Coding_Exam_B/classes/RayTracer.java
-				//TODO: Make a Ray class
+//TODO: Make a Ray class
 File:src/Coding_Exam_B/classes/Vector3.java
 //TODO: Create a Vector4 class
