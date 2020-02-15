@@ -1,7 +1,6 @@
 package Coding_Exam_B;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -26,33 +25,33 @@ public class CodingExamB {
 		 *    the line number for where each TODO was found. 
 		*/
 			out+="File:"+fileName+"\n";
-			System.out.println(out);
-			try {
 				String l="";
-				BufferedReader br = new BufferedReader(new FileReader(fileName));
-				while(br.readLine() != null || br.readLine() != "") {
-					l=br.readLine();
-					System.out.println(l);
-					if(l != null || l != "") {
+				try {
+					BufferedReader br = new BufferedReader(new FileReader(fileName));
+					while(br.readLine() != null) {
+						l += br.readLine() + "\n";
+						System.out.print(l);
 						if(l.contains("//TODO:")) {
-							out+=l+"\n";
-							System.out.println(out);
+							out += l;
 						}
+						l = "";
 					}
+					br.close();
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
-			} catch (Exception e) {
-			}
+				System.out.println(l);
 		return out;
 	}
 	
 	public static void main(String[] args) {
 		String finalLogString = getLoggingInfo("src/Coding_Exam_B/classes/Camera.java");
 		out = "";
-		//finalLogString += getLoggingInfo("src/Coding_Exam_B/classes/RayTracedImageViewer.java");
+		 finalLogString += getLoggingInfo("src/Coding_Exam_B/classes/RayTracedImageViewer.java");
 		out = "";
-		//finalLogString += getLoggingInfo("src/Coding_Exam_B/classes/RayTracer.java");
+		finalLogString += getLoggingInfo("src/Coding_Exam_B/classes/RayTracer.java");
 		out = "";
-		//finalLogString += getLoggingInfo("src/Coding_Exam_B/classes/Vector3.java");
+		finalLogString += getLoggingInfo("src/Coding_Exam_B/classes/Vector3.java");
 		out = "";
 		/*
 		 * 2. Write the finalLogString to a file called TODO_Log.txt. The file should match TODO_Log_example.txt. 
