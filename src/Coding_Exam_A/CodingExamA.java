@@ -87,7 +87,7 @@ public class CodingExamA {
 				 r.penDown();
 				 r.sparkle();
 				 for(int j=0; j<Integer.parseInt(sides);j++) {
-					r.setSpeed(62);
+					r.setSpeed(1);
 				 	r.move(40);
 				 	r.turn(20);
 				 }
