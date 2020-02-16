@@ -25,22 +25,19 @@ public class CodingExamB {
 		 *    the line number for where each TODO was found. 
 		*/
 			out+="File:"+fileName+"\n";
-				String l="";
 				try {
 					BufferedReader br = new BufferedReader(new FileReader(fileName));
-					while(br.readLine() != null) {
-						l += br.readLine() + "\n";
-						System.out.print(l);
+					String l = br.readLine();
+					while(l != null) {
 						if(l.contains("//TODO:")) {
-							out += l;
+							out += l + "\n";
 						}
-						l = "";
+						l = br.readLine();
 					}
 					br.close();
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
-				System.out.println(l);
 		return out;
 	}
 	
