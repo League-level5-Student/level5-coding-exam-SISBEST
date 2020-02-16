@@ -27,12 +27,18 @@ public class CodingExamB {
 			out+="File:"+fileName+"\n";
 				try {
 					BufferedReader br = new BufferedReader(new FileReader(fileName));
+					int linenum = 0;
 					String l = br.readLine();
 					while(l != null) {
 						if(l.contains("//TODO:")) {
-							out += l + "\n";
+							String toadd = linenum + 1 + ":";
+							while((linenum + "").length() < 6) {
+								toadd += " ";
+							}
+							toadd += l.trim();
 						}
 						l = br.readLine();
+						linenum++;
 					}
 					br.close();
 				} catch (IOException e) {
@@ -43,13 +49,13 @@ public class CodingExamB {
 	
 	public static void main(String[] args) {
 		String finalLogString = getLoggingInfo("src/Coding_Exam_B/classes/Camera.java");
-		out = "";
+		out = "\n";
 		 finalLogString += getLoggingInfo("src/Coding_Exam_B/classes/RayTracedImageViewer.java");
-		out = "";
+		out = "\n";
 		finalLogString += getLoggingInfo("src/Coding_Exam_B/classes/RayTracer.java");
-		out = "";
+		out = "\n";
 		finalLogString += getLoggingInfo("src/Coding_Exam_B/classes/Vector3.java");
-		out = "";
+		out = "\n";
 		/*
 		 * 2. Write the finalLogString to a file called TODO_Log.txt. The file should match TODO_Log_example.txt. 
 		 */

@@ -28,7 +28,7 @@ public class CodingExamA {
 		 int nums = Integer.parseInt(num);
 		 Thread t = new Thread(()->{
 			 Robot r = new Robot();
-			 r.setWindowColor(Color.CYAN);
+			 r.setWindowColor(Color.GRAY);
 			 r.setWindowSize(1300, 900);
 			 Color c;
 			 switch(color.toUpperCase()) {
@@ -48,9 +48,9 @@ public class CodingExamA {
 			 r.penDown();
 			 r.sparkle();
 			 for(int i=0; i<Integer.parseInt(sides);i++) {
-				r.setSpeed(62);
+				r.setSpeed(1);
 			 	r.move(40);
-			 	r.turn(20);
+			 	r.turn(360/Integer.parseInt(sides));
 			 }
 			 r.penUp();
 			 r.unSparkle();
@@ -89,7 +89,7 @@ public class CodingExamA {
 				 for(int j=0; j<Integer.parseInt(sides);j++) {
 					r.setSpeed(1);
 				 	r.move(40);
-				 	r.turn(20);
+				 	r.turn(360/Integer.parseInt(sides));
 				 }
 				 r.penUp();
 				 r.unSparkle();
